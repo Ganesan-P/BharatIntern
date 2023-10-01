@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganesan Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="header">
+    <div class="container">
+        <nav>
+            <ul>
+                <li> <a href="#header">Home</a></li>
+                <li> <a href="#about">About</a></li>
+                <li> <a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-text">
+            <p><span>Ganesan</span></p>
+            <h1>Python Developer</h1>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="about">
+    <div class="container">
+        <div class="row">
+            
+            <div class="about-col-2"></div>
+            <h1 class="sub-title">About Me</h1>
+            <p>Pursuing B.Tech. in Information Technology candidate,
+                 looking for a challenging developer role for Python
+                 in a reputable organization to utilize the technical and management skills for the growth of the organization
+                 as well as to enhance the knowledge about new and emerging trends in the IT sector.</p>
+                 <div class="tab-titles"></div>
+                 <p class="tab-links active-link" onclick="opentab('skills & education')">Skills</p>
+                
+
+        </div>
+        <div class="tab-contents active-tab" id="skills & education">
+        <ul>
+            <li><span>Web development</span><br>designing web interfaces</li>
+            <li><span>python developer</span></li>
+            <li><span>2020-2024</span><br>Under Graduate</li>
+            <li> <span>2023</span><br>python from GUVI</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="Contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+              <h1 class="sub-title">contact</h1>
+              <p> <i class="fa-solid fa-envelope"></i>ganesanganapathi92@gmail.com</p>
+              <p><i class="fa-solid fa-phone"></i>6381881485</p>
+              <div class="social-icons">
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                
+              </div>
+              <a href="gan/ganesancv.pdf" download class="btn btn2">Download CV</a>
+
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name=" Name" placeholder="Your name" required>
+                        <input type="email" name=" email" placeholder="Your email" required>
+                       <input type="message" name="Message" placeholder="Your Message" required>
+                        <button type="submit" class="btn btn2">submit</button>
+                    </form>
+                    <div id="msg"> </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>copyright@ganesan. Made with git</p>
+    </div>
+
+  </div>
+
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classlist.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classlist.remove("active-tab");
+            }
+            event.currentTarget.classlist.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+      
+    </script>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby4mEMouOaVGqY2icKOzsL-JhUSFMYGdijd6AbGcZB4JzBw4iemiC3MkS47MoV1ajIX/exec'
+    const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById("msg")
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+             msg.innerHTML = "Message sent successfully"
+             setTimeout(function(){
+             msg.innerHTML = ""
+             },5000)
+             form.reset()
+
+        } )
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>
